@@ -64,3 +64,18 @@ useReducer에 정의한 reducer함수와 초기 state를 넣어주면 state와 s
 
 ![투두리스트](https://drive.google.com/uc?id=1CEFdB0WdsFuHYy6hVnpLpaBzI57GH_de)  
 해당 코드를 실행하면 투두리스트를 확인 할 수 있습니다.
+
+```js
+// context.js
+
+const Context = createContext();
+
+const Provider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+  );
+};
+```
+
+부모 컨테이너로부터 값을 전달 받기 싫다면 위의 코드처럼 컨텍스트를 이용해서 각 컴포넌트에 값을 전달해 주어도 됩니다.
